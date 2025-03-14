@@ -1,6 +1,6 @@
 import heapq
 """
-using Dijkstra’s algorithm to return the length of the shortest cycle in the graph (if the graph is acyclic, it should say so) 
+using Dijkstra’s algorithm to return the length of the shortest cycle in the graph
 
 Algorithm:
     1:implement a procedure based on  Dijkstra’s algorithm to find the shortest path from one vertex to the vertex it self, if there is a path, it is the shortest cycle for this vertex.
