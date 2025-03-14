@@ -12,8 +12,13 @@ for i in {1..100}; do
 
     expected=`head -n 1 $filepath`
     output=`./main.py --input $filepath`
+    errorcode=$?
 
-    num1=`echo "${output:37}" | xargs`
+    if [[ "$errorcode" == "0" ]]; then
+        num1=`echo "${output:37}" | xargs`
+    else
+        num1=`echo "${output:0:5}" | xargs`
+    fi
     num2=`echo "${expected:1}" | xargs`
 
     if [[ "$num1" == "$num2" ]]; then

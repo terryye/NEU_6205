@@ -29,10 +29,11 @@ def parse_file(path):
                     raise ValueError(f"Invalid edge format in line: {line.strip()}")
                 for i in range(0, len(edges), 2):
                     dest, weight = edges[i], edges[i + 1]
-                    if not dest.isdigit() or not weight.isdigit():
+                    if not dest.isdigit() or not weight.isdigit() or int(weight) <= 0:
                         raise ValueError(f"Invalid edge data: {edges[i]} {edges[i + 1]}")
                     graph[source].append((int(dest), int(weight)))
-
+        if not graph:
+            raise ValueError("Empty Graph")
     except FileNotFoundError:
         print(f"Error: File '{file}' not found.")
         exit(1)
@@ -40,6 +41,6 @@ def parse_file(path):
         print(f"Error in input file: {e}")
         exit(1)
     except Exception as e:
-        print(f"Unexpected error: {e}")
+        print(f"Error Unexpected: {e}")
         exit(1)
     return graph
